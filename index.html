@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My cutuu Angel's revenge</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Montserrat:wght@400;700&display=swap');
+
+        /* Global Reset and Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Page Container Settings for Smooth Transitions */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease-in-out;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .page.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* --- Page 1: Rage and Death Theme --- */
+        #page1 {
+            background: radial-gradient(circle, #3a0000 0%, #050000 70%, #000000 100%);
+            animation: flicker 4s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { box-shadow: inset 0 0 100px rgba(255, 0, 0, 0.1); }
+            20%, 24%, 55% { box-shadow: inset 0 0 150px rgba(255, 0, 0, 0.6); }
+        }
+
+        .rage-btn {
+            background: transparent;
+            color: #ff3333;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            border: 2px solid #5c0000;
+            padding: 20px 40px;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #5c0000;
+            transition: all 0.3s ease;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        .rage-btn:hover {
+            background: #2b0000;
+            color: #ff4d4d;
+            box-shadow: 0 0 30px #ff0000;
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 15px #5c0000, inset 0 0 10px #2b0000; }
+            100% { box-shadow: 0 0 35px #ff0000, inset 0 0 20px #5c0000; }
+        }
+
+        /* --- Page 2: Input Page --- */
+        #page2 {
+            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+        }
+
+        .menu-container {
+            background: rgba(30, 30, 30, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .menu-container h2 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="text"] {
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 2px solid #444;
+            border-radius: 8px;
+            background: #111;
+            color: #fff;
+            outline: none;
+            transition: border-color 0.3s;
+            text-align: center;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ff3333;
+        }
+
+        .submit-btn {
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            background: #ff3333;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        .submit-btn:hover {
+            background: #ff4d4d;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* --- Page 3: Success Page --- */
+        #page3 {
+            background: linear-gradient(to bottom, #4a0000, #1f0000); /* Dark blood background */
+        }
+
+        #page3 h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #ffb3b3;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+        }
+
+        .gif-container {
+            border: 4px solid #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .gif-container img {
+            width: 100%;
+            display: block;
+        }
+
+        /* --- Error Page --- */
+        #error-page {
+            background: #050505;
+        }
+
+        #error-page h1 {
+            font-family: monospace;
+            font-size: 2rem;
+            color: #888;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        .retry-btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: transparent;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .retry-btn:hover {
+            color: #fff;
+            border-color: #fff;
+            background: #222;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Page 1: Landing Page -->
+    <div id="page1" class="page active">
+        <button class="rage-btn" id="start-btn">Tap here if you want to beat that mf </button>
+    </div>
+
+    <!-- Page 2: Input Page -->
+    <div id="page2" class="page">
+        <div class="menu-container">
+            <h2>Mention that motherfucker's gender</h2>
+            <div class="input-group">
+                <input type="text" id="name-input" placeholder="Type here..." autocomplete="off">
+                <button class="submit-btn" id="submit-btn">Enter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Success Page -->
+    <div id="page3" class="page">
+        <h1>Is that you ANGEL ? 🎀😂</h1>
+        <div class="gif-container">
+            <!-- Using a standard cute/funny placeholder GIF from Giphy -->
+            <img src="C:\Users\Lokesh\Downloads\s-beating-s.gif" alt="Cute GIF">
+        </div>
+    </div>
+
+    <!-- Error Page -->
+    <div id="error-page" class="page">
+        <h1>This gender doesn't deserve that⚠️</h1>
+        <button class="retry-btn" id="retry-btn">Try Again</button>
+    </div>
+
+    <script>
+        // DOM Elements
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+        const page3 = document.getElementById('page3');
+        const errorPage = document.getElementById('error-page');
+        
+        const startBtn = document.getElementById('start-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const retryBtn = document.getElementById('retry-btn');
+        const nameInput = document.getElementById('name-input');
+
+        // Navigation Function
+        function navigate(hideElement, showElement) {
+            hideElement.classList.remove('active');
+            showElement.classList.add('active');
+        }
+
+        // Logic to validate the name
+        function validateInput() {
+            // Get value, trim whitespaces, and convert to lowercase
+            const inputValue = nameInput.value.trim().toLowerCase();
+
+            if (inputValue === "men" || inputValue === "male") {
+                navigate(page2, page3);
+            } else {
+                navigate(page2, errorPage);
+            }
+        }
+
+        // Event Listeners
+        
+        // Page 1 -> Page 2
+        startBtn.addEventListener('click', () => {
+            navigate(page1, page2);
+            // Auto focus input after transition
+            setTimeout(() => { nameInput.focus(); }, 800); 
+        });
+
+        // Page 2 Submission via Button
+        submitBtn.addEventListener('click', validateInput);
+
+        // Page 2 Submission via Enter Key
+        nameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                validateInput();
+            }
+        });
+
+        // Error Page -> Page 2 (Retry)
+        retryBtn.addEventListener('click', () => {
+            nameInput.value = ''; // Clear the input field
+            navigate(errorPage, page2);
+            setTimeout(() => { nameInput.focus(); }, 800);
+        });
+
+    </script>
+</body>
+</html>
